@@ -3,4 +3,6 @@ It will be used in conjunction with the Static server to serve a complete webpag
 
 It will use a simple express.js applet, as this is the best thing to use for a proof of concept.
 This applet will return randomly generated JSON using chance.js.
-Sources under `src/` will me moved to `/opt/app/`.clear
+
+Sources under `src/` will me moved to `/opt/app/`.
+The app itself listens on port 80 and is mapped to port 8081 to the Docker host.
