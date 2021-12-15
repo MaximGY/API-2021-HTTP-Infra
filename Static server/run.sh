@@ -1,3 +1,3 @@
 #/bin/bash
 
-docker run -d -p 8080:80 --rm static_httpd
+docker run -d --rm --name static_httpd static_httpd

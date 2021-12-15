@@ -5,4 +5,4 @@ It will use a simple express.js applet, as this is the best thing to use for a p
 This applet will return randomly generated JSON using chance.js.
 
 Sources under `src/` will me moved to `/opt/app/`.
-The app itself listens on port 80 and is mapped to port 8081 to the Docker host.
+The app itself listens on port 80.

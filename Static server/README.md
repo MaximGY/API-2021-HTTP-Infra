@@ -5,4 +5,4 @@ This static server uses the default apache config of the `php5.6-apache` docker 
 Meaning all content is stored in `/var/www/html/` and VHosts configurations in `/etc/apache2/sites-enabled/` 
 
 Scripts are provided to build and deploy the server.
-The server is accessible on port 80 and is exposed to its Docker host on port 8080.
+The server is accessible on port 80.
