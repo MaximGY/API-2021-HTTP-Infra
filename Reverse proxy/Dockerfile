@@ -1,9 +1,9 @@
-FROM php:5.6-apache
-COPY reverse-proxy.conf /etc/apache2/sites-available/
+FROM php:7.2-apache
 
-RUN a2enmod proxy
-RUN a2enmod proxy_http
-RUN a2ensite reverse-proxy.conf
+COPY conf/* /etc/apache2/sites-available/
+
+RUN a2enmod proxy proxy_http
+RUN a2ensite reverse-proxy.conf sinkhole.conf
 RUN a2dissite 000-default.conf
 
 RUN service apache2 restart
