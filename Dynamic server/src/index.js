@@ -4,10 +4,17 @@ var server = require("express")();
 const port = 80
 
 server.get('/', (request, response) => {
-    response.send(chance.name() + '\n');
+
+    var names = chance.name().split(' ')
+    
+    response.send({
+        firstName: names[0],
+        lastName: names[1],
+        age: chance.age()
+    });
 })
 
 server.listen(port, () => {
-    console.log("Now listening on port 80.")
+    console.log("Now listening on port " + port + ".")
 })
 
