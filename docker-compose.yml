@@ -1,0 +1,28 @@
+services:
+  static_content:
+    build: ./static_server
+
+    labels:
+      - traefik.http.routers.static.rule=Host(`http-infra.api`)
+      - traefik.http.routers.static.entrypoints=http
+
+  dynamic_content:
+    build: ./dynamic_server
+
+    labels:
+      - traefik.http.middlewares.dynamic_redirect.stripprefix.prefixes=/api
+      - traefik.http.routers.dynamic.rule=Host(`http-infra.api`) && PathPrefix(`/api`)
+      - traefik.http.routers.dynamic.entrypoints=http
+      - traefik.http.routers.dynamic.middlewares=dynamic_redirect
+
+  reverse_proxy:
+    build: ./traefik_proxy
+    ports:
+      - 80:80
+      - 8080:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      - traefik.http.routers.api.rule=Host(`traefik.http-infra.api`)
+      - traefik.http.routers.api.entrypoints=http
+      - traefik.http.routers.api.service=api@internal

@@ -8,4 +8,6 @@ RUN a2enmod proxy proxy_http
 RUN a2ensite 000-sinkhole.conf
 RUN a2dissite 000-default.conf
 
+EXPOSE 80
+
 CMD /usr/local/bin/envsetup.sh
