@@ -2,7 +2,7 @@ var chance = require("chance").Chance()
 var server = require("express")();
 
 const port = 80
-const servnum = chance.natural({min: 1, max: 1000})
+const guid = chance.guid()
 
 server.get('/', (request, response) => {
 
@@ -14,7 +14,7 @@ server.get('/', (request, response) => {
             lastName: names[1],
             age: chance.age()
         },
-        servnum: servnum
+        guid: guid
     });
 })
 
